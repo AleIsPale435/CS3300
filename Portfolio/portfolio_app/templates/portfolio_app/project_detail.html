@@ -1,0 +1,10 @@
+{% extends 'portfolio_app/base_template.html' %}
+
+{% block content %}
+    <h1>Project Details</h1>
+    <p><strong>Title:</strong> {{ project.title }}</p>
+    <p><strong>Description:</strong> {{ project.description }}</p>
+    <p><strong>Portfolio:</strong> <a href="{{ project.portfolio.get_absolute_url }}">{{ project.portfolio.title }}</a></p>
+    <p><strong>Student:</strong> <a href="{% url 'student-detail' project.portfolio.student.id %}">{{ project.portfolio.student.name }}</a></p>
+
+{% endblock %}

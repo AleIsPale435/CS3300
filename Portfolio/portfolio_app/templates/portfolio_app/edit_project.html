@@ -1,0 +1,10 @@
+{% extends 'portfolio_app/base_template.html' %}
+
+{% block content %}
+    <h1>Edit Project</h1>
+    <form action="{% url 'edit_project' project_id=project.id %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'portfolio_app/base_template.html' %}
+
+{% block content %}
+    <h1>Create Project</h1>
+    <form action= '' method="POST">
+        {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        <div style="margin-top: 20px;"> 
+            <input type="submit" value="Create Project" style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px;">
+        </div>
+    </form>
+
+{% endblock %}

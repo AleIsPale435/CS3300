@@ -7,4 +7,13 @@
 
 <h2>More to come from Alejandro!</h2>
 
+    <ul class="list-group">
+        {% for i in studentActivePortfolios %} 
+            <li class="list-group-item">Name: {{ i.name }} 
+                <p><strong>Portfolio:{{ i.portfolio.title }} 
+                    <a href="{{ i.portfolio.get_absolute_url }}" class="btn btn-primary">View</a>
+                </strong></p> 
+            </li> 
+        {% endfor %} 
+    </ul>  
 {% endblock %}

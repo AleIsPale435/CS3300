@@ -13,7 +13,7 @@ class Portfolio(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('portfolio-detail', args=[str(self.id)])
+        return reverse("portfolio-detail", args=[str(self.id)])
 
 class Student(models.Model):
 
@@ -30,22 +30,22 @@ class Student(models.Model):
     name = models.CharField(max_length=200, null=True)
     email = models.CharField("UCCS Email", max_length=200, null=True)
     major = models.CharField(max_length=200, choices=MAJOR, blank = False, null=True)
-    portfolio = models.OneToOneField(Portfolio, null=True, on_delete=models.CASCADE)
+    portfolio = models.OneToOneField(Portfolio, null=True, on_delete=models.CASCADE, unique=True)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('student-detail', args=[str(self.id)])
+        return reverse("student-detail", args=[str(self.id)])
 
 
 class Project(models.Model):
     title = models.CharField(max_length=200, null=True)
     description = models.TextField(blank=False, null=True)
-    portfolio = models.ManyToManyField(Portfolio)
+    portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE, default=None)
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('project-detail', args=[str(self.id)])
+        return reverse("project-detail", args=[str(self.id)])
 

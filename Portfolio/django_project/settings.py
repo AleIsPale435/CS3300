@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portfolio_app',
+    'django_bootstrap5',
 ]
 
 AUTHENTICATION_BACKENDS = [
