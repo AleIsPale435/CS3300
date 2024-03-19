@@ -12,10 +12,11 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('students/', views.StudentListView.as_view(), name='student'),
     path('student/<int:pk>', views.StudentDetailView.as_view(), name='student-detail'),
-    path('projects/', views.ProjectListView.as_view(), name='project'),
+    path('projects/', views.ProjectListView.as_view(), name='projects'),
     path('portfolio/<int:pk>', views.PortfolioDetailView.as_view(), name='portfolio-detail'),
     path('project/<int:pk>/', views.ProjectDetailView.as_view(), name='project-detail'),
     path('portfolio/<int:portfolio_id>/create_project', views.createProject, name='create_project'),
     path('project/<int:project_id>/edit_project', views.editProject, name='edit_project'),
-
+    path('portfolio/<int:portfolio_id>/update_portfolio', views.update_portfolio, name='update_portfolio'),
+    path('project/int:<project_id>/delete_project', views.delete_project, name='delete_project')
 ]

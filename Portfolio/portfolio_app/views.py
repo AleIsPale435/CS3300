@@ -48,19 +48,35 @@ def createProject(request, portfolio_id):
     return render(request, 'portfolio_app/project_form.html', context)
 
 def editProject(request, project_id):
-    try:
-        project = Project.objects.get(pk=project_id)
-    except:
-        print("FAILED")
-
-    portfolio_id = project.portfolio.id
+    project = Project.objects.get(pk=project_id)
     form = ProjectForm(instance=project)
 
     if request.method == 'POST':
         form = ProjectForm(request.POST, instance=project)
         if form.is_valid():
             form.save()
-            return redirect('portfolio-detail', portfolio_id=portfolio_id)
+            return redirect('portfolio-detail', project.portfolio.pk)
     
     context = {'form': form}
     return render(request, 'portfolio_app/edit_project.html', context)
+
+def update_portfolio(request, portfolio_id):
+    portfolio = Portfolio.objects.get(pk=portfolio_id)
+    if request.method == 'POST':
+        form = PortfolioForm(request.POST, instance=portfolio)
+        if form.is_valid():
+            form.save()
+            return redirect('portfolio-detail', pk=portfolio_id)
+    else:
+        form = PortfolioForm(instance=portfolio)
+
+    return render(request, 'portfolio_app/update_portfolio.html', {'form': form})
+
+def delete_project(request, project_id):
+
+    project = Project.objects.get(pk=project_id)
+    if request.method == 'POST':
+        project.delete()
+        return redirect('portfolio-detail', project.portfolio.pk)
+
+    return render(request, 'portfolio_app/delete_project.html', {'project': project})
