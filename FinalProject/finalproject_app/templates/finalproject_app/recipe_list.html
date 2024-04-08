@@ -6,16 +6,18 @@
 <body>
     <h1>All Recipes</h1>
     <ul>
+        <a href="{% url 'add_recipe' %}" class="btn btn-success">Add</a>
         {% for recipe in recipes %}
             <li class="list-group-item">Title: {{ recipe.title }}
                 <p><strong>Author:</strong> {{ recipe.author }}</p>
                 <a href="{{ recipe.get_absolute_url }}" class="btn btn-primary">View</a>
                 <a href="{% url 'modify_recipe' recipe.id %}" class="btn btn-warning">Modify</a>
-                <a href="{% url 'add_recipe' %}" class="btn btn-success">Add</a>
                 <a href="{% url 'delete_recipe' recipe.id %}" class="btn btn-danger">Delete</a>
                 
             </li>
         {% empty %}
+        <a href="{% url 'add_recipe' %}" class="btn btn-success">Add</a>
+
             <li>No recipes found.</li>
         {% endfor %}
     </ul>
