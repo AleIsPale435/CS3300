@@ -11,5 +11,10 @@ urlpatterns = [
 # example in html <a href="{% url 'index' %}">Home</a>.
     path('', views.index, name='index'),
     path('recipes/', recipe_list, name="recipe_list"),
-    path('recipes/<int:pk>', views.RecipeDetailView.as_view(), name='recipe-detail')
+    path('recipes/<int:pk>', views.RecipeDetailView.as_view(), name='recipe_detail'),
+    path('recipes/<int:recipe_id>/modify/', modify_recipe, name='modify_recipe'),
+    path('recipes/add/', add_recipe, name='add_recipe'),
+    path('recipes/<int:recipe_id>/delete/', delete_recipe_view, name='delete_recipe'),
+
+
 ]

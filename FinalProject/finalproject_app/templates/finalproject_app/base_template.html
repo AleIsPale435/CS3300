@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Scrumptious{% endblock %}</title>
     {% bootstrap_css %}
+    <!-- Include the font from Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap">
     <style>
         body {
             background-color: #333; /* Dark grey color */
@@ -17,6 +19,7 @@
         }
         .navbar-brand,
         .navbar-nav .nav-link {
+            font-family: 'Indie Flower', cursive; /* Apply the custom font */
             color: purple;
         }
     </style>
