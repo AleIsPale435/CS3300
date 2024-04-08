@@ -1,0 +1,18 @@
+{% extends "finalproject_app/base_template.html" %}
+{% block content %}
+
+<title>Recipes</title>
+</head>
+<body>
+    <h1>All Recipes</h1>
+    <ul>
+        {% for recipe in recipes %}
+            <li class="list-group-item">Title: {{ recipe.title }}
+                <p><strong> Author: {{ recipe.author }}
+                    <a href="{{ recipe.recipe.get_absolute_url }}" class="btn btn-primary">View</a>
+        {% empty %}
+            <li>No recipes found.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
