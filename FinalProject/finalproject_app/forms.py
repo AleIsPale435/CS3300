@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 class RecipeForm(ModelForm):
     class Meta:
         model = Recipe
-        fields = ('title', 'ingredients', 'number_of_steps', 'steps', 'author', 'visibility')
+        fields = ('title', 'ingredients', 'pictures', 'number_of_steps', 'steps', 'author', 'visibility')
 
 class ChefForm(ModelForm):
     class Meta:

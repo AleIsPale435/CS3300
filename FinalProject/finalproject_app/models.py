@@ -6,7 +6,7 @@ from django.urls import reverse
 class Recipe(models.Model):
     title = models.CharField(max_length=200)
     ingredients = models.TextField()
-    pictures = models.ImageField(upload_to='recipe_images/', null=True, blank=True)
+    pictures = models.ImageField(upload_to='recipe_images/', null=True)
     number_of_steps = models.IntegerField()
     steps = models.TextField()
     author = models.CharField(max_length=200, null=True)
@@ -22,7 +22,7 @@ class Recipe(models.Model):
 class Chef(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    phone_number = models.CharField(max_length=20, blank=True, null=True)
+    phone_number = models.CharField(max_length=20, null=True)
     recipe = models.OneToOneField(Recipe, null=True, on_delete=models.CASCADE, unique=True)
 
     def __str__(self):

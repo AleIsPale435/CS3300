@@ -1,10 +1,14 @@
 {% extends "finalproject_app/base_template.html" %}
-{% block content %}
 {% load static %}
-<div class="text-center">
-    <img src="{% static 'images/scrumtiouslogo.jpg' %}" alt="Sample Image" class="img-fluid mt-3">
-</div>
-<div class="container mt-3">
-    <p class="text-center">Welcome to Scrumptious!</p>
-</div>
+{% block content %}
+
+<style>
+    h1{
+        font-family:'Indie Flower', cursive;
+    }
+</style>
+    <h1> Welcome to Scrumptious! </h1>
+    <img src="{% static 'images/scrumptiouslogo.png' %}">
+
+
 {% endblock %}

@@ -1,8 +1,10 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import *
-from .forms import ProjectForm, PortfolioForm, StudentForm
+from .forms import ProjectForm, PortfolioForm, CreateUserForm, StudentForm
 from django.views import generic
+from django.contrib.auth.models import Group
+from django.contrib import messages
 
 
 # Create your views here.
@@ -80,3 +82,40 @@ def delete_project(request, project_id):
         return redirect('portfolio-detail', project.portfolio.pk)
 
     return render(request, 'portfolio_app/delete_project.html', {'project': project})
+
+def registerPage(request):
+
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            group = Group.objects.get(name='student')
+            user.groups.add(group)
+            student = Student.objects.create(user=user,)
+            portfolio = Portfolio.objects.create()
+            student.portfolio = portfolio
+            student.save()
+
+            messages.success(request, 'Account was created for ' + username)
+            return redirect('login')
+    
+    context ={'form': form}
+    return render(request, 'registration/register.html', context)
+
+
+def userPage(request):
+    student = request.user.student
+    form = StudentForm(instance = student)
+    print('student', student)
+    portfolio = student.portfolio
+    print(portfolio)
+    if request.method == 'POST':
+        form = StudentForm(request.POST, request.FILES, instance=student)
+        if form.is_valid():
+            form.save()
+    
+    context = {'portfolios':portfolio, 'form':form}
+    return render(request, 'portfolio_app/user.html', context)

@@ -18,5 +18,8 @@ urlpatterns = [
     path('portfolio/<int:portfolio_id>/create_project', views.createProject, name='create_project'),
     path('project/<int:project_id>/edit_project', views.editProject, name='edit_project'),
     path('portfolio/<int:portfolio_id>/update_portfolio', views.update_portfolio, name='update_portfolio'),
-    path('project/int:<project_id>/delete_project', views.delete_project, name='delete_project')
+    path('project/int:<project_id>/delete_project', views.delete_project, name='delete_project'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/register/', views.registerPage, name='register_page'),
+    path('user/', views.userPage, name='user_page'),
 ]

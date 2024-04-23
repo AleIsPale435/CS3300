@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -31,6 +32,7 @@ class Student(models.Model):
     email = models.CharField("UCCS Email", max_length=200, null=True)
     major = models.CharField(max_length=200, choices=MAJOR, blank = False, null=True)
     portfolio = models.OneToOneField(Portfolio, null=True, on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

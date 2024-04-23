@@ -16,4 +16,10 @@ class PortfolioForm(ModelForm):
 class StudentForm(ModelForm):
     class Meta:
         model = Student
-        fields = ('name', 'email', 'major')
+        fields = '__all__'
+        exclude =['user', 'portfolio']
+
+class CreateUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
