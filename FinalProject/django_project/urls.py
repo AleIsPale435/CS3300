@@ -22,6 +22,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('finalproject_app.urls')),
     path('login/', auth_views.LoginView.as_view(), name='login')
 ]

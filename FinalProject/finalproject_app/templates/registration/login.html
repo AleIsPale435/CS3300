@@ -1,0 +1,19 @@
+<!-- inherit from base.html -->
+{% extends 'finalproject_app/base_template.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap">
+
+  <form method="POST" action="" style="font-family: Indie Flower, cursive;">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    
+    <input type="submit" value="login">
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
+
+  {# Assumes you setup the password_reset view in your URLconf #}
+   <p><a href="{% url 'register_page' %}" style="font-family: Indie Flower, cursive;">Register</a></p> 
+
+{% endblock %}

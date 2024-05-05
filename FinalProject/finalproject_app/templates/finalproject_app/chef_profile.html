@@ -1,0 +1,29 @@
+{% extends 'finalproject_app/base_template.html' %}
+{% block content %}
+    <style>
+        body {
+            font-family: "Indie Flower", cursive; /* Change the font family to your desired font */
+        }
+    </style>
+
+    <h3>Creator Dashboard</h3>
+    <h3>User: {{ user.chef.name }}</h3>
+    <h4>Username: {{ user.username }}</h4>
+    
+    <!-- Display the recipe title -->
+    <h4>Recipe: {{ user.chef.recipe.title }}</h4>
+    
+    <!-- Display the recipe image -->
+    <img src="{{ user.chef.recipe.pictures.url }}" alt="{{ user.chef.recipe.title }}" style="max-width: 200px;">
+    
+    <!-- Buttons for editing, adding, and deleting recipe -->
+    <button style="background-color: purple; color: white; border: none; padding: 10px 20px; margin-right: 10px;">
+        <a href="{% url 'modify_recipe' user.chef.recipe.id %}" style="text-decoration: none; color: inherit;">Edit Recipe</a>
+    </button>
+    <button style="background-color: purple; color: white; border: none; padding: 10px 20px; margin-right: 10px;">
+        <a href="{% url 'add_recipe' %}" style="text-decoration: none; color: inherit;">Add Recipe</a>
+    </button>
+    <button style="background-color: purple; color: white; border: none; padding: 10px 20px;">
+        <a href="{% url 'delete_recipe' user.chef.recipe.id %}" style="text-decoration: none; color: inherit;">Delete Recipe</a>
+    </button>
+{% endblock %}

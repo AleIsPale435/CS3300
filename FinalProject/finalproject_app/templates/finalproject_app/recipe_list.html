@@ -2,29 +2,40 @@
 {% block content %}
 
 <title>Recipes</title>
-<head>
-    <style>
-        h1{
-            font-family: 'Indie Flower', cursive;
-        }
-        h2 {
-            font-family: 'Indie Flower', cursive;
-        }
-    </style>
-</head>
+<style>
+    .recipe-container {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+    }
+
+    .recipe-item {
+        width: calc(33.33% - 20px); /* Adjust the width as needed */
+        margin: 10px;
+        text-align: center;
+    }
+
+    h1 {
+        font-family: 'Indie Flower', cursive;
+    }
+
+    h2 {
+        font-family: 'Indie Flower', cursive;
+    }
+</style>
 <body>
     <h1>All Recipes</h1>
-    <ul>
+    <ul class="recipe-container">
         {% for recipe in recipes %}
-            <li class="list-group-item">
+            <li class="recipe-item">
                 <h2>{{ recipe.title }}</h2>
                 <a href="{{ recipe.get_absolute_url }}">
-                    <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" style="max-width: 1000px;">
+                    <img src="{{ recipe.pictures.url }}" alt="{{ recipe.title }}" style="max-width: 200px;">
                 </a>
             </li>
         {% empty %}
             <li>No recipes found.</li>
         {% endfor %}
     </ul>
-
 {% endblock %}

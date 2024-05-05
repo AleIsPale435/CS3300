@@ -41,8 +41,13 @@
                         <a class="nav-link" href="{% url 'recipe_list' %}">Recipes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Creator Dashboard</a>
+                        <a class="nav-link" href="{% url 'chef_profile' %}">Creator Dashboard</a>
                     </li>
+                    {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'logout' %}">Logout {{user}}</a>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    {% endif %}
                 </ul>
             </div>
         </div>

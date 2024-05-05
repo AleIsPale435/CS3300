@@ -4,24 +4,34 @@
 <title>{{ recipe.title }}</title>
 <head>
     <style>
-        h1{
+        body {
+            text-align: center; 
+        }
+        h1 {
             font-family: 'Indie Flower', cursive;
         }
-        p{
+        p {
             font-family: 'Indie Flower', cursive;
+        }
+        .recipe-details {
+            display: inline-block; 
+            text-align: left; 
+            vertical-align: top; 
         }
     </style>
 </head>
 <body>
-    <h1>{{ recipe.title }}</h1>
-    <p><strong>Author:</strong> {{ recipe.author }}</p>
-    <img src="{{ recipe.pictures.url }}" alt="{{ recipe.title }}" style="height: auto;">
-    <p><strong>Ingredients:</strong></p>
-    <p>{{ recipe.ingredients }}</p>
-    <p><strong>Number of Steps:</strong> {{ recipe.number_of_steps }}</p>
-    <p><strong>Steps:</strong></p>
-    <p>{{ recipe.steps }}</p>
-    <a href="{% url 'recipe_list' %}" class="btn btn-primary">Back to Recipes</a>
+    <div class="recipe-details"> 
+        <h1>{{ recipe.title }}</h1>
+        <p><strong>Author:</strong> {{ user.chef.name }}</p>
+        <p><strong>Ingredients:</strong></p>
+        <p>{{ recipe.ingredients }}</p>
+        <p><strong>Number of Steps:</strong> {{ recipe.number_of_steps }}</p>
+        <p><strong>Steps:</strong></p>
+        <p>{{ recipe.steps }}</p>
+        <a href="{% url 'recipe_list' %}" class="btn btn-primary">Back to Recipes</a>
+    </div>
+    <img src="{{ recipe.pictures.url }}" alt="{{ recipe.title }}" style="width: 200px; margin-top: 20px;">
 </body>
 </html>
 
